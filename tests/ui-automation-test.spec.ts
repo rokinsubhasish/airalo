@@ -32,7 +32,14 @@ test("purchase Japan esim package", async ({ browser }) => {
 	await expect(homePage.coverageValue).toHaveText("Japan");
 	await expect(homePage.dataValue).toHaveText("1 GB");
 	await expect(homePage.validityValue).toHaveText("7 Days");
-	await expect(homePage.priceValue).toHaveText("4.50 €");
+	let price: string;
+	const isCI = process.env.CI === "true";
+	if (isCI) {
+		price = "$4.50 USD";
+	} else {
+		price = "4.50 €";
+	}
+	await expect(homePage.priceValue).toHaveText(price);
 
 	// Close the browser context
 	await context.close();
