@@ -25,7 +25,7 @@ airalo/
 
 ```bash
 git clone https://github.com/rokinsubhasish/airalo.git
-cd airalov
+cd airalo
 npm install
 ```
 
